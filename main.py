@@ -17,13 +17,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$carl'):
+    if message.content('$carl'):
         await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
 
-    if message.content.startswith('$kebab'):
+    if message.content('$kebab'):
         await message.channel.send('Oispa kebab...')
 
-    if message.content.startswith('$kisso'):
+    if message.content('$kisso'):
         await message.channel.send('https://tenor.com/view/i-want-food-gif-22483506')
 
 client.run(TOKEN)
