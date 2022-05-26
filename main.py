@@ -23,4 +23,7 @@ async def on_message(message):
     if message.content.startswith('$kebab'):
         await message.channel.send('Oispa kebab...')
 
+    if message.content.startswith('$kisso'):
+        await message.channel.send('https://tenor.com/view/i-want-food-gif-22483506')
+
 client.run(TOKEN)
