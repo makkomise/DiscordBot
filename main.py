@@ -20,4 +20,7 @@ async def on_message(message):
     if message.content.startswith('$carl'):
         await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
 
+    if message.content.startswith('$kebab'):
+        await message.channel.send('Oispa kebab...')
+
 client.run(TOKEN)
