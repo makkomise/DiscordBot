@@ -10,20 +10,17 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+    print(f'{client.user} has connected to Discord!')  
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content == ('$carl'):
+    if "vittusaatana" in message.content():
+        await message.channel.send('nyt loppu tommonen')
+
+    if message.content == ('$carl'):    #testi carl-viesti
         await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
-
-    if message.content == ('$kebab'):
-        await message.channel.send('Oispa kebab...')
-
-    if message.content == ('$kisso'):
-        await message.channel.send('https://tenor.com/view/i-want-food-gif-22483506')
 
 client.run(TOKEN)
