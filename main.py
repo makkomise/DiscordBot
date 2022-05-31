@@ -17,10 +17,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if "vittusaatana" in message.content():
-        await message.channel.send('nyt loppu tommonen')
-
     if message.content == ('$carl'):    #testi carl-viesti
         await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
+
+    if 'vittu' in message.content.lower():
+        await message.channel.send('Hiljaa saatana.')
 
 client.run(TOKEN)
