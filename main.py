@@ -12,15 +12,17 @@ client = discord.Client()
 async def on_ready():
     print(f'{client.user} has connected to Discord!')  
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+with open('blacklist.txt', 'a+') as blacklist: #opens up blacklist
 
-    if message.content == ('$carl'):    #testi carl-viesti
-        await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
+    @client.event
+    async def on_message(message):
+        if message.author == client.user:
+            return
 
-    if 'vittu' in message.content.lower():
-        await message.channel.send('Hiljaa saatana.')
+        if message.content == ('$carl'):    #testi carl-viesti
+            await message.channel.send('CAAAAAAAAARRRRRLLLLL!')
+
+        if message.content.lower in blacklist.read():
+            await message.channel.send('Eipä kiroilla, helvetti sentään.')
 
 client.run(TOKEN)
