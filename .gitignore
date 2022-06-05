@@ -1,5 +1,5 @@
 # Blacklist hide from plain sight
-blacklist.txt
+blacklist.*
 
 
 # Byte-compiled / optimized / DLL files
