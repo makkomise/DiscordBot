@@ -15,8 +15,7 @@ async def on_ready():
 
 #tuhmien sanojen filtteri
 
-with open ('blacklist.txt', 'r') as file:  #jos joku kirjoittaa sanan mikä filtterissä, botti reagoi
-    blacklist = file.read().split("\n")
+
 
 @bot.event 
 async def on_message(message):
@@ -24,13 +23,16 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    for word in blacklist:
+    with open ('blacklist.txt', 'r') as file:  #jos joku kirjoittaa sanan mikä filtterissä, botti reagoi
+        blacklist = file.read().split("\n")
+        
+    for word in blacklist:  #jos tuhma sana löytyy filtteristä niin botti poistaa sen ja lähettää viestin 
         if word in message.content.lower():
-            await message.delete()  #poistaa tuhman viestin
-            await message.channel.send(f' {message.author.mention} your message was removed due to channel rules' )    #lähettää tämmöttisen viestin jos sana listalla
+            await message.delete()  
+            await message.channel.send(f' {message.author.mention} your message was removed due to channel rules' )    
       
+    file.close()
     await bot.process_commands(message)
-
 
 
 @bot.command(name='help')   #botin helppikomento, miten lisätä sanoja kirosanafiltteriin
